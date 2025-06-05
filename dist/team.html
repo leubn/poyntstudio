@@ -89,42 +89,44 @@
   <!-- Louis -->
   <!-- Louis -->
  <!-- Louis -->
-<div class="col-span-2 md:col-span-1">
-  <div
-    class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
-    
-    <div class="relative w-full aspect-square bg-black overflow-hidden">
-      <video
-        id="revealVideo"
-        src="./assets/Louis5.mp4"
-        playsinline
-        loop
-        muted
-        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-      ></video>
-
-      <!-- Overlay for all devices -->
-      <div id="revealOverlay" class="absolute inset-0 flex items-center justify-center bg-black z-10">
-        <button onclick="startReveal()" class="text-white text-base font-signika tracking-wide">reveal</button>
+  <div class="col-span-2 md:col-span-1">
+    <div
+      class="max-w-[460px] mx-auto bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
+  
+      <div class="relative w-full aspect-square bg-black overflow-hidden">
+        <video
+          id="revealVideo"
+          src="./assets/Louis5.mp4"
+          playsinline
+          loop
+          muted
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+        ></video>
+  
+        <!-- Centered Overlay -->
+        <div id="revealOverlay"
+          class="absolute inset-0 flex items-center justify-center bg-black z-10 pointer-events-auto">
+          <button onclick="startReveal()" class="text-white text-base font-signika tracking-wide">reveal</button>
+        </div>
+      </div>
+  
+      <div class="absolute bottom-0 left-0 right-0 text-center">
+        <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
       </div>
     </div>
-
-    <div class="absolute bottom-0 left-0 right-0 text-center">
-      <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
-    </div>
   </div>
-</div>
+  
+  <script>
+    function startReveal() {
+      const overlay = document.getElementById('revealOverlay');
+      const video = document.getElementById('revealVideo');
+      overlay.classList.add('opacity-0');
+      setTimeout(() => overlay.remove(), 500);
+      video.classList.remove('opacity-0');
+      video.play();
+    }
+  </script>
 
-<script>
-  function startReveal() {
-    const overlay = document.getElementById('revealOverlay');
-    const video = document.getElementById('revealVideo');
-    overlay.classList.add('opacity-0');
-    setTimeout(() => overlay.remove(), 500);
-    video.classList.remove('opacity-0');
-    video.play();
-  }
-</script>
 
 
 
