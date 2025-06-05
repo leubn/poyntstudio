@@ -87,51 +87,32 @@
   </header>
   <!-- Content -->
   <!-- Louis -->
-  <!-- Louis -->
-  <div class="col-span-2 md:col-span-1">
-    <div
-      class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative max-w-[460px] mx-auto">
-  
-      <div class="relative w-full aspect-square bg-black overflow-hidden">
-        <video
-          id="revealVideo"
-          src="./assets/Louis5.mp4"
-          playsinline
-          loop
-          muted
-          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-        ></video>
-  
-        <!-- Centered reveal button on all screen sizes -->
-        <div id="revealOverlay"
-          class="absolute inset-0 flex items-center justify-center bg-black z-10">
-          <button onclick="startReveal()" class="text-white text-lg font-signika tracking-wide">reveal</button>
+  <div class="container mx-auto">
+    <h1 class="text-4xl pt-10 pb-8"><b>LOUIS</b></h1>
+    <div class="grid grid-cols-2 gap-14 md:gap-20">
+      <div class="col-span-2 md:col-span-1">
+        <div
+          class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
+        <!-- Video -->
+          <style>
+            video::-webkit-media-controls {
+              display: none !important;
+            }
+          </style>
+          
+          <video autoplay loop muted playsinline preload="auto"
+            class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto">
+            <source src="./assets/Louis5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video> 
+          <!--<img src="./assets/Louis5.mp4" alt=""
+            class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto" /> -->
+          <div class="absolute bottom-0 left-0 right-0 text-center">
+            <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
+          </div>
         </div>
+
       </div>
-  
-      <div class="absolute bottom-0 left-0 right-0 text-center">
-        <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
-      </div>
-    </div>
-  </div>
-  
-  <script>
-    function startReveal() {
-      const overlay = document.getElementById('revealOverlay');
-      const video = document.getElementById('revealVideo');
-      overlay.classList.add('opacity-0');
-      setTimeout(() => overlay.remove(), 500);
-      video.classList.remove('opacity-0');
-      video.play();
-    }
-  </script>
-
-
-
-
-
-
-
       <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
         <div class="block md:hidden">
           <!-- <p class="text-3xl font-serif font-bold mb-1">Hello there,</p> -->
@@ -189,22 +170,17 @@
          
         </p>
         <p class="mb-4">
-          I'm a Reno-based photographer and creative with 5 years of experience 
-          in Dubai’s media industry. I worked with agencies like Trifid Media 
-          and also ran my own media agency, handling projects across 3D visuals, 
-          set production, and branded content.
+          I’m a Nevada-based portrait and lifestyle photographer who specializes in 
+          capturing real moments in natural light. 
         </p>
         <p class="mb-4">
-          Now I do freelance photography, specializing in weddings, graduation
-          portraits, real estate, and commercial work — but my real passion is 
-          street photography and capturing raw, candid moments.
+          My goal is to create photos that feel like you—authentic, relaxed, and timeless. 
+          Whether I’m documenting a couple’s story or shooting a solo session, I focus on 
+          connection and comfort above all.
         </p>
         <p>
-          I study Electrical Engineering at the University of Nevada, Reno, and 
-          also work on other creative endeavors like building clothing brands and 
-          developing a platform for creatives.
-          If you're looking for a photographer with both technical skill and 
-          creative edge, let's connect.
+          When I’m not behind the lens, you’ll find me hiking the Sierras or enjoying 
+          a good pour-over. Let’s create something beautiful together.
 
         </p>
       </section>
