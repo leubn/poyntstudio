@@ -99,12 +99,11 @@
           playsinline
           loop
           muted
-          class="absolute inset-0 w-full h-full object-cover hidden md:block"
-          autoplay
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
         ></video>
   
-        <!-- Mobile Overlay Button -->
-        <div id="revealOverlay" class="absolute inset-0 flex items-center justify-center md:hidden z-10 bg-black">
+        <!-- Overlay for all devices -->
+        <div id="revealOverlay" class="absolute inset-0 flex items-center justify-center bg-black z-10">
           <button onclick="startReveal()" class="text-white text-base font-signika tracking-wide">reveal</button>
         </div>
       </div>
@@ -121,10 +120,11 @@
       const video = document.getElementById('revealVideo');
       overlay.classList.add('opacity-0');
       setTimeout(() => overlay.remove(), 500);
-      video.classList.remove('hidden');
+      video.classList.remove('opacity-0');
       video.play();
     }
   </script>
+
 
 
 
