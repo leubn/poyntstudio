@@ -87,26 +87,31 @@
   </header>
   <!-- Content -->
   <!-- Louis -->
-<!-- Replace your existing "Louis" video block with this -->
-  <div class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
-    <div class="relative w-full aspect-square bg-black">
-      <video
-        id="revealVideo"
-        src="./assets/Louis5.mp4"
-        playsinline
-        loop
-        muted
-        class="absolute inset-0 w-full h-full object-cover hidden md:block"
-        autoplay
-      ></video>
+  <!-- Louis -->
+  <div class="col-span-2 md:col-span-1">
+    <div
+      class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
+      
+      <div class="relative w-full aspect-square bg-black overflow-hidden">
+        <video
+          id="revealVideo"
+          src="./assets/Louis5.mp4"
+          playsinline
+          loop
+          muted
+          class="absolute inset-0 w-full h-full object-cover hidden md:block"
+          autoplay
+        ></video>
   
-      <!-- Mobile overlay -->
-      <div id="revealOverlay" class="absolute inset-0 flex items-center justify-center md:hidden bg-black z-10">
-        <button onclick="startReveal()" class="text-white text-lg font-signika">reveal</button>
+        <!-- Mobile Overlay Button -->
+        <div id="revealOverlay" class="absolute inset-0 flex items-center justify-center md:hidden z-10 bg-black">
+          <button onclick="startReveal()" class="text-white text-base font-signika tracking-wide">reveal</button>
+        </div>
       </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0 text-center">
-      <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
+  
+      <div class="absolute bottom-0 left-0 right-0 text-center">
+        <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
+      </div>
     </div>
   </div>
   
@@ -120,6 +125,7 @@
       video.play();
     }
   </script>
+
 
 
       <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
