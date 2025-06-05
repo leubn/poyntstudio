@@ -45,6 +45,45 @@
 
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+    <!-- loading screen -->
+  <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center transition-opacity duration-500 hidden">
+    <video
+      id="loaderVideo"
+      src="dist/assets/loading.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      class="w-full h-full object-contain"
+    ></video>
+  </div>
+  
+  <script>
+    const loader = document.getElementById("loader");
+    const video = document.getElementById("loaderVideo");
+  
+    if (!sessionStorage.getItem("loaderPlayed")) {
+      loader.classList.remove("hidden");
+      video.onended = () => {
+        loader.classList.add("opacity-0");
+        setTimeout(() => loader.remove(), 500);
+      };
+      sessionStorage.setItem("loaderPlayed", "true");
+  
+      // fallback in case onended doesn't fire
+      setTimeout(() => {
+        if (loader) {
+          loader.classList.add("opacity-0");
+          setTimeout(() => loader.remove(), 500);
+        }
+      }, 6000);
+    } else {
+      // loader already played; remove it immediately
+      loader.remove();
+    }
+  </script>
+
+  
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
   <!-- Navbar -->
