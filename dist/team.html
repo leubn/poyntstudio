@@ -87,32 +87,52 @@
   </header>
   <!-- Content -->
   <!-- Louis -->
-  <div class="container mx-auto">
-    <h1 class="text-4xl pt-10 pb-8"><b>LOUIS</b></h1>
-    <div class="grid grid-cols-2 gap-14 md:gap-20">
-      <div class="col-span-2 md:col-span-1">
-        <div
-          class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
-        <!-- Video -->
-          <style>
-            video::-webkit-media-controls {
-              display: none !important;
-            }
-          </style>
-          
-          <video autoplay loop muted playsinline preload="auto"
-            class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto">
-            <source src="./assets/Louis5.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video> 
-          <!--<img src="./assets/Louis5.mp4" alt=""
-            class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto" /> -->
-          <div class="absolute bottom-0 left-0 right-0 text-center">
-            <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
-          </div>
+  <div class="col-span-2 md:col-span-1">
+    <div
+      class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative overflow-hidden">
+  
+      <div class="relative w-full aspect-square">
+        <video
+          id="louisVideo"
+          loop
+          muted
+          playsinline
+          preload="auto"
+          class="smooth-edges absolute top-0 left-0 w-full h-full object-cover z-0">
+          <source src="./assets/Louis5.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+  
+        <!-- Overlay for mobile -->
+        <div id="revealOverlay"
+          class="absolute inset-0 bg-black flex items-center justify-center z-10 md:hidden">
+          <button id="revealBtn"
+            class="text-white border border-white px-8 py-2 text-xl font-signika lowercase transition hover:opacity-70">reveal</button>
         </div>
-
       </div>
+  
+      <div class="absolute bottom-0 left-0 right-0 text-center z-20">
+        <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">Louis</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const video = document.getElementById('louisVideo');
+    const overlay = document.getElementById('revealOverlay');
+    const button = document.getElementById('revealBtn');
+  
+    button.addEventListener('click', () => {
+      video.play();
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => overlay.remove(), 500);
+    });
+  
+    if (window.innerWidth >= 768) {
+      video.play().catch(() => { /* ignore autoplay block */ });
+    }
+  </script>
+
       <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
         <div class="block md:hidden">
           <!-- <p class="text-3xl font-serif font-bold mb-1">Hello there,</p> -->
