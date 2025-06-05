@@ -46,13 +46,13 @@
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
   <!-- Navbar -->
-  <header class="flex w-full overflow-hidden pt-10 pb-1">
-  <!-- Navbar -->
+ <!-- Replace your <header> section with the one below -->
+<header class="flex w-full overflow-hidden pt-10 pb-1">
   <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
     <div class="container mx-auto flex flex-wrap items-center justify-between md:flex-no-wrap w-full">
       <!-- Left: Logo -->
       <div class="mr-4 md:mr-8">
-        <a href="dist/about_me.html" class="text-2xl font-signika font-bold">POYNT</a>
+        <a href="../index.html" class="text-2xl font-signika font-bold">POYNT</a>
       </div>
 
       <!-- Center: Instagram Icon -->
@@ -79,7 +79,7 @@
               class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
               :class="{'opacity-0': open } "></span>
             <span aria-hidden="true"
-              class="block absolute h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+              class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
               :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
           </div>
         </button>
@@ -91,18 +91,22 @@
         <ul id="ulMenu"
           class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
           <li class="group transition duration-300">
-            <a href="index.html" class="font-signika text-2xl tap-highlight-transparent">GALLERY
+            <a href="../index.html" class="font-signika text-2xl">POYNT
+              <span
+                class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white">
+              </span>
+            </a>
+          </li>
+          <li class="group transition duration-300">
+            <a href="about_me.html" class="font-signika text-2xl">ABOUT ME
               <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
             </a>
           </li>
           <li class="group transition duration-300">
-            <a href="dist/about_me.html" class="font-signika text-2xl tap-highlight-transparent">ABOUT 
-              <span class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
-            </a>
-          </li>
-          <li class="group transition duration-300">
-            <a href="dist/contact.html" class="font-signika text-2xl tap-highlight-transparent">CONTACT
-              <span class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+            <a href="contact.html" class="font-signika text-2xl">CONTACT
+              <span
+                class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white">
+              </span>
             </a>
           </li>
         </ul>
@@ -110,6 +114,7 @@
     </div>
   </nav>
 </header>
+
 
   <!-- Content -->
   <div class="container mx-auto">
