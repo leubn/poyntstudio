@@ -45,30 +45,6 @@
 
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
-    <!-- loading screen -->
-  <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center transition-opacity duration-500">
-    <video
-      src="dist/assets/loading.mp4"
-      autoplay
-      muted
-      playsinline
-      preload="auto"
-      class="w-full h-full object-contain"
-      onended="(function(){let l=document.getElementById('loader');l.classList.add('opacity-0');setTimeout(()=>l.remove(),500);})();"
-    ></video>
-  </div>
-  <script>
-    // fallback in case video doesn't trigger onended
-    setTimeout(() => {
-      const loader = document.getElementById("loader");
-      if (loader) {
-        loader.classList.add("opacity-0");
-        setTimeout(() => loader.remove(), 500);
-      }
-    }, 6000);
-  </script>
-  
-  <!-- end of loading --> 
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
   <!-- Navbar -->
@@ -76,7 +52,7 @@
     <div class="container mx-auto flex flex-wrap items-center justify-between md:flex-no-wrap w-full">
       <!-- Left: Logo -->
       <div class="mr-4 md:mr-8">
-        <a href="dist/gallery.html" class="text-2xl font-signika font-bold">POYNT</a>
+        <a href="index.html" class="text-2xl font-signika font-bold">POYNT</a>
       </div>
 
       <!-- Center: Instagram Icon 
@@ -116,7 +92,7 @@
         <ul id="ulMenu"
           class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
           <li class="group transition duration-300">
-            <a href="dist/gallery.html" class="font-signika text-2xl tap-highlight-transparent">GALLERY
+            <a href="index.html" class="font-signika text-2xl tap-highlight-transparent">GALLERY
               <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
             </a>
           </li>
