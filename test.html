@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POYNT - Categories</title>
+  <meta name="description" content="Poynt Studio Categories">
+  <link rel="icon" type="image/x-icon" href="dist/assets/favicon.ico" />
+  <link rel="stylesheet" href="dist/output.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./dist/*.{html,js}"],
+      theme: {
+        extend: {
+          fontFamily: {
+            'signika': ['Signika', 'sans-serif'],
+          },
+        },
+      },
+      plugins: [],
+    }
+  </script>
+</head>
+
+<body class="dark:bg-black bg-white min-h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+  <header class="flex w-full overflow-hidden pt-10 pb-1">
+    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+      <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+        <div class="mr-4 md:mr-8">
+          <a href="../index.html" class="text-2xl font-signika font-bold">POYNT</a>
+        </div>
+        <div class="ml-auto space-x-4">
+          <a href="index.html" class="text-sm font-signika hover:underline">Gallery</a>
+          <a href="team.html" class="text-sm font-signika hover:underline">Team</a>
+          <a href="contact.html" class="text-sm font-signika hover:underline">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mx-auto">
+    <h1 class="text-4xl pt-10 pb-8 font-bold">CATEGORIES</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+      <a href="index.html" class="group relative overflow-hidden rounded-xl">
+        <img src="dist/gallery/image1.jpg" alt="Portraits" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+          <h2 class="text-white text-3xl font-bold">Portraits</h2>
+        </div>
+      </a>
+      <a href="index.html" class="group relative overflow-hidden rounded-xl">
+        <img src="dist/gallery/image5.jpg" alt="Weddings" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+          <h2 class="text-white text-3xl font-bold">Weddings</h2>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="mt-20">
+    <div class="max-w-screen-xl py-16 mx-auto text-center">
+      <p class="font-signika"><b>POYNT</b></p>
+      <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+        920 Evans Ave, Reno, NV 89512<br />(775)-287-6064
+      </p>
+      <div class="mt-8">
+        <a class="text-gray-600 dark:text-gray-300 hover:opacity-75" href="https://www.instagram.com/POYNT" target="_blank" rel="noreferrer">
+          <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048..." />
+          </svg>
+        </a>
+      </div>
+      <p class="mt-8 text-xs text-gray-600 dark:text-gray-300">
+        © 2025 <a href="https://www.instagram.com/POYNT/" class="underline">POYNT</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="dist/fade_in.js"></script>
+</body>
+</html>
