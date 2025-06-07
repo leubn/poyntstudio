@@ -9,7 +9,7 @@
   <meta name="description"
     content="Poynt Studio">
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="dist/assets/favicon.ico" />
   <link rel="stylesheet" href="dist/output.css" />
   <link rel="stylesheet" href="styles.css" />
   <!-- Alpine.js -->
@@ -17,13 +17,87 @@
   <!-- Start - Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
   <!-- End - Fonts -->
+  <!-- Start - Fancybox Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- End - Fancybox Scripts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./dist/*.{html,js}"],
+      theme: {
+        extend:
+                {
+                  fontFamily: {
+                    'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
+                    'signika': ['Signika', 'sans-serif'],
+                  },
+                },
+      },
+      plugins: [],
+    }
+  </script>
 </head>
 
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+      <!-- loading screen -->
+  <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center transition-opacity duration-500 hidden">
+    <video
+      id="loaderVideo"
+      src="dist/assets/loading2.mp4"
+      muted
+      playsinline
+      preload="auto"
+      class="w-full h-full object-contain absolute"
+    ></video>
+    <button id="enterButton"
+      class="z-10 text-white text-xl md:text-2xl font-light tracking-wide bg-transparent border-none outline-none hover:opacity-80 transition-opacity duration-300 hidden">
+      enter
+    </button>
+  </div>
+  
+  <script>
+    const loader = document.getElementById("loader");
+    const video = document.getElementById("loaderVideo");
+    const enterButton = document.getElementById("enterButton");
+  
+    if (!sessionStorage.getItem("loaderPlayed")) {
+      loader.classList.remove("hidden");
+  
+      const tryPlay = video.play();
+  
+      if (tryPlay !== undefined) {
+        tryPlay.then(() => {
+          video.onended = () => {
+            loader.classList.add("opacity-0");
+            setTimeout(() => loader.remove(), 500);
+          };
+          sessionStorage.setItem("loaderPlayed", "true");
+        }).catch(() => {
+          // Autoplay blocked — show enter button
+          enterButton.classList.remove("hidden");
+          enterButton.onclick = () => {
+            enterButton.classList.add("opacity-0");
+            video.play().then(() => {
+              video.onended = () => {
+                loader.classList.add("opacity-0");
+                setTimeout(() => loader.remove(), 500);
+              };
+              sessionStorage.setItem("loaderPlayed", "true");
+              enterButton.remove();
+            });
+          };
+        });
+      }
+    } else {
+      loader.remove();
+    }
+  </script>
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
     <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
@@ -292,8 +366,12 @@
       </p>
     </div>
   </footer>
-  <script src="fade_in.js"></script>
-  <script src="menu.js"></script>
+  <!-- Script for the LightBox -->
+  <script>
+    Fancybox.bind("[data-fancybox]", {});
+  </script>
+  <script src="dist/fade_in.js"></script>
+  <script src="dist/menu.js"></script>
 </body>
 
 </html>
