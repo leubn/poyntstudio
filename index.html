@@ -81,14 +81,14 @@
       const addSpeedUpHandler = () => {
         document.addEventListener("keydown", (e) => {
           if ((e.key === "Enter" || e.keyCode === 13) && !speedUpTriggered) {
-            video.playbackRate = 3.0;
+            video.playbackRate = 1.5;
             speedUpTriggered = true;
           }
         });
   
         video.addEventListener("click", () => {
           if (!speedUpTriggered) {
-            video.playbackRate = 3.0;
+            video.playbackRate = 1.5;
             speedUpTriggered = true;
           }
         });
