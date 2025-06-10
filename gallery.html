@@ -49,7 +49,7 @@
   <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center transition-opacity duration-500 hidden">
     <video
       id="loaderVideo"
-      src="https://res.cloudinary.com/dxufo6vkw/video/upload/v1749351290/loading_pebwme.mp4"
+      src="https://res.cloudinary.com/dxufo6vkw/video/upload/v1749494912/loading.mp4"
       muted
       playsinline
       preload="auto"
@@ -66,27 +66,49 @@
     const video = document.getElementById("loaderVideo");
     const enterButton = document.getElementById("enterButton");
   
+    let speedUpTriggered = false;
+  
     if (!sessionStorage.getItem("loaderPlayed")) {
       loader.classList.remove("hidden");
   
       const tryPlay = video.play();
   
+      const finishLoader = () => {
+        loader.classList.add("opacity-0");
+        setTimeout(() => loader.remove(), 500);
+      };
+  
+      const addSpeedUpHandler = () => {
+        document.addEventListener("keydown", (e) => {
+          if ((e.key === "Enter" || e.keyCode === 13) && !speedUpTriggered) {
+            video.playbackRate = 1.5;
+            speedUpTriggered = true;
+          }
+        });
+  
+        video.addEventListener("click", () => {
+          if (!speedUpTriggered) {
+            video.playbackRate = 1.5;
+            speedUpTriggered = true;
+          }
+        });
+      };
+  
       if (tryPlay !== undefined) {
         tryPlay.then(() => {
+          addSpeedUpHandler();
           video.onended = () => {
-            loader.classList.add("opacity-0");
-            setTimeout(() => loader.remove(), 500);
+            finishLoader();
           };
           sessionStorage.setItem("loaderPlayed", "true");
         }).catch(() => {
-          // Autoplay blocked — show enter button
           enterButton.classList.remove("hidden");
           enterButton.onclick = () => {
             enterButton.classList.add("opacity-0");
             video.play().then(() => {
+              addSpeedUpHandler();
               video.onended = () => {
-                loader.classList.add("opacity-0");
-                setTimeout(() => loader.remove(), 500);
+                finishLoader();
               };
               sessionStorage.setItem("loaderPlayed", "true");
               enterButton.remove();
@@ -98,14 +120,13 @@
       loader.remove();
     }
   </script>
-
   
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
       <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
         <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
           <div class="mr-4 md:mr-8">
-            <a href="index.html" class="text-2xl font-signika font-bold">← POYNT</a>
+            <a href="index.html" class="text-2xl font-signika font-bold">POYNT</a>
           </div>
        
       <!-- Right: Hamburger Menu -->
@@ -160,13 +181,20 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <!--PORTRAITS-->
     <a href="portraits.html" class="group relative overflow-hidden shadow-lg">
-      <img src="dist/gallery/image1.jpg" alt="Portraits" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
+      <img src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749395744/image4_bxvfz3.jpg" alt="Portraits" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
       <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
         <h2 class="text-white text-xl sm:text-2xl font-bold">PORTRAITS</h2>
       </div>
     </a>
 
-    </a>
+    
+    <!--WEDDINGS-->
+    <a href="weddings.html" class="group relative overflow-hidden shadow-lg">
+      <img src="dist/gallery/image5.jpg" alt="Weddings" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+        <h2 class="text-white text-xl sm:text-2xl font-bold">WEDDINGS</h2>
+      </div>
+    </a>    
 
     <!--GRADUATIONS-->
     <a href="graduations.html" class="group relative overflow-hidden shadow-lg">
@@ -176,21 +204,17 @@
       </div>
     </a>
     
-    <!--WEDDINGS-->
-    <a href="weddings.html" class="group relative overflow-hidden shadow-lg">
-      <img src="dist/gallery/image5.jpg" alt="Weddings" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
-      <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-        <h2 class="text-white text-xl sm:text-2xl font-bold">WEDDINGS</h2>
-      </div>
-    </a>
 
-    <!--CORPORATE-->
+
+    <!--CORPORATE
     <a href="corporate.html" class="group relative overflow-hidden shadow-lg">
       <img src="dist/gallery/image2.jpg" alt="Corporate" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105" />
       <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
         <h2 class="text-white text-xl sm:text-2xl font-bold">CORPORATE</h2>
       </div>
     </a>
+    -->
+
     
   </div>
 </div>
