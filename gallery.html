@@ -134,9 +134,8 @@
       .then(html => {
         headerEl.innerHTML = html;
 
-        // ✅ Set the active page — change this string per page
-        const current = "gallery"; // or "team", "contact", etc.
-
+        // ✅ Set active link
+        const current = "gallery";
         document.querySelectorAll(".nav-link").forEach(link => {
           if (link.dataset.page === current) {
             const span = link.querySelector(".underline-span");
@@ -146,6 +145,11 @@
             }
           }
         });
+
+        // ✅ Dynamically load menu.js AFTER header is inserted
+        const script = document.createElement("script");
+        script.src = "/dist/menu.js";
+        document.body.appendChild(script);
       })
       .catch(err => {
         headerEl.innerHTML = "<!-- Failed to load header -->";
