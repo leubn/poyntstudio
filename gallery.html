@@ -134,8 +134,9 @@
       .then(html => {
         headerEl.innerHTML = html;
 
-        // ✅ Set active link
-        const current = "gallery";
+        // ✅ Set active nav link
+        // Options: "gallery", "team", "contact"
+        const current = "gallery"; // ← CHANGE THIS PER PAGE
         document.querySelectorAll(".nav-link").forEach(link => {
           if (link.dataset.page === current) {
             const span = link.querySelector(".underline-span");
@@ -146,7 +147,14 @@
           }
         });
 
-        // ✅ Dynamically load menu.js AFTER header is inserted
+        // ✅ Set navbar title and link
+        const titleEl = document.getElementById("navbarTitle");
+        if (titleEl) {
+          titleEl.textContent = "← GALLERY";  // ← CHANGE TEXT PER PAGE
+          titleEl.href = "/gallery.html";        // ← CHANGE LINK PER PAGE
+        }
+
+        // ✅ Load hamburger menu script
         const script = document.createElement("script");
         script.src = "/dist/menu.js";
         document.body.appendChild(script);
