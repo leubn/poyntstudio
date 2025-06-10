@@ -1,23 +1,20 @@
-// Insert loading markup
+// Inject loading.html content
 document.addEventListener("DOMContentLoaded", () => {
-  const loaderHTML = `
-    <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center transition-opacity duration-500 hidden">
-      <video
-        id="loaderVideo"
-        src="https://res.cloudinary.com/dxufo6vkw/video/upload/v1749494912/loading.mp4"
-        muted
-        playsinline
-        preload="auto"
-        class="w-full h-full object-contain absolute"
-      ></video>
-      <button id="enterButton"
-        class="z-10 text-white text-xl md:text-2xl font-light tracking-wide bg-transparent border-none outline-none hover:opacity-80 transition-opacity duration-300 hidden">
-        enter
-      </button>
-    </div>
-  `;
-  document.body.insertAdjacentHTML("afterbegin", loaderHTML);
+  const loadingEl = document.querySelector('[data-include-loading]');
+  if (!loadingEl) return;
 
+  fetch(loadingEl.getAttribute("data-include-loading"))
+    .then(res => res.text())
+    .then(html => {
+      loadingEl.innerHTML = html;
+      startLoader(); // run actual loader logic after injection
+    })
+    .catch(err => {
+      console.error("Failed to load loading.html:", err);
+    });
+});
+
+function startLoader() {
   const loader = document.getElementById("loader");
   const video = document.getElementById("loaderVideo");
   const enterButton = document.getElementById("enterButton");
@@ -49,15 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
       });
     }
-
-    // 🔒 Fallback in case video never ends
-    setTimeout(() => {
-      if (document.getElementById("loader")) {
-        loader.classList.add("opacity-0");
-        setTimeout(() => loader.remove(), 500);
-      }
-    }, 7000); // optional fallback delay
   } else {
     loader.remove();
   }
-});
+}
