@@ -45,59 +45,11 @@
   
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
-    <!-- loading screen -->
-  <div id="loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center transition-opacity duration-500 hidden">
-    <video
-      id="loaderVideo"
-      src="https://res.cloudinary.com/dxufo6vkw/video/upload/v1749351290/loading_pebwme.mp4"
-      muted
-      playsinline
-      preload="auto"
-      class="w-full h-full object-contain absolute"
-    ></video>
-    <button id="enterButton"
-      class="z-10 text-white text-xl md:text-2xl font-light tracking-wide bg-transparent border-none outline-none hover:opacity-80 transition-opacity duration-300 hidden">
-      enter
-    </button>
-  </div>
-  
-  <script>
-    const loader = document.getElementById("loader");
-    const video = document.getElementById("loaderVideo");
-    const enterButton = document.getElementById("enterButton");
-  
-    if (!sessionStorage.getItem("loaderPlayed")) {
-      loader.classList.remove("hidden");
-  
-      const tryPlay = video.play();
-  
-      if (tryPlay !== undefined) {
-        tryPlay.then(() => {
-          video.onended = () => {
-            loader.classList.add("opacity-0");
-            setTimeout(() => loader.remove(), 500);
-          };
-          sessionStorage.setItem("loaderPlayed", "true");
-        }).catch(() => {
-          // Autoplay blocked — show enter button
-          enterButton.classList.remove("hidden");
-          enterButton.onclick = () => {
-            enterButton.classList.add("opacity-0");
-            video.play().then(() => {
-              video.onended = () => {
-                loader.classList.add("opacity-0");
-                setTimeout(() => loader.remove(), 500);
-              };
-              sessionStorage.setItem("loaderPlayed", "true");
-              enterButton.remove();
-            });
-          };
-        });
-      }
-    } else {
-      loader.remove();
-    }
-  </script>
+
+<!-- Inject loading screen -->
+<div data-include-loading="/dist/loading.html"></div>
+<script src="/dist/loading.js"></script>
+
 
   
 <!-- HEADER / NAVBAR -->
