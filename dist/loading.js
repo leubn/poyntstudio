@@ -28,6 +28,7 @@ function startLoader() {
       tryPlay.then(() => {
         video.onended = () => {
           loader.classList.add("opacity-0");
+          document.body.classList.remove("opacity-0"); // ✅ make body visible
           setTimeout(() => loader.remove(), 500);
         };
         sessionStorage.setItem("loaderPlayed", "true");
@@ -38,6 +39,7 @@ function startLoader() {
           video.play().then(() => {
             video.onended = () => {
               loader.classList.add("opacity-0");
+              document.body.classList.remove("opacity-0"); // ✅ make body visible
               setTimeout(() => loader.remove(), 500);
             };
             sessionStorage.setItem("loaderPlayed", "true");
@@ -48,5 +50,6 @@ function startLoader() {
     }
   } else {
     loader.remove();
+    document.body.classList.remove("opacity-0"); // ✅ make body visible immediately if already played
   }
 }
