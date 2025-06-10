@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POYNT - Your Page Title</title>
+  <meta name="description" content="Poynt Studio" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/dist/assets/favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/dist/output.css" />
+  <link rel="stylesheet" href="/dist/styles.css" />
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Fancybox -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <!-- Tailwind config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./dist/*.{html,js}"],
+      theme: {
+        extend: {
+          fontFamily: {
+            'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
+            'signika': ['Signika', 'sans-serif'],
+          },
+        },
+      },
+      plugins: [],
+    };
+  </script>
+</head>
+
+<body class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+
+  <!-- Loading screen -->
+  <div data-include-loading="/dist/loading.html"></div>
+  <script src="/dist/loading.js"></script>
+
+  <!-- HEADER / NAVBAR -->
+  <div id="header" data-include-header="/dist/header.html"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const headerEl = document.querySelector('[data-include-header]');
+      if (!headerEl) return;
+
+      fetch(headerEl.getAttribute('data-include-header'))
+        .then(res => res.text())
+        .then(html => {
+          headerEl.innerHTML = html;
+
+          // ✅ Set active nav link
+          const current = "gallery"; // ← CHANGE THIS PER PAGE
+          document.querySelectorAll(".nav-link").forEach(link => {
+            if (link.dataset.page === current) {
+              const span = link.querySelector(".underline-span");
+              if (span) {
+                span.classList.remove("max-w-0");
+                span.classList.add("max-w-full");
+              }
+            }
+          });
+
+          // ✅ Set navbar title and link
+          const titleEl = document.getElementById("navbarTitle");
+          if (titleEl) {
+            titleEl.textContent = "← GALLERY";  // ← CHANGE TEXT PER PAGE
+            titleEl.href = "/gallery.html";     // ← CHANGE LINK PER PAGE
+          }
+
+          // ✅ Load hamburger menu
+          const script = document.createElement("script");
+          script.src = "/dist/menu.js";
+          document.body.appendChild(script);
+        })
+        .catch(err => {
+          headerEl.innerHTML = "<!-- Failed to load header -->";
+          console.error("Header load error:", err);
+        });
+
+      // FOOTER
+      const footerEl = document.querySelector('[data-include-footer]');
+      if (footerEl) {
+        fetch(footerEl.getAttribute('data-include-footer'))
+          .then(res => res.text())
+          .then(html => {
+            footerEl.innerHTML = html;
+          })
+          .catch(err => {
+            footerEl.innerHTML = "<!-- Failed to load footer -->";
+            console.error("Footer load error:", err);
+          });
+      }
+    });
+  </script>
+
+  <!-- PAGE CONTENT -->
+  <div class="container mx-auto py-10">
+    <h1 class="text-4xl font-bold mb-6">Your Page Heading</h1>
+    <p class="mb-4">Replace this section with your actual page content.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer" data-include-footer="/dist/footer.html"></div>
+
+  <!-- Fancybox Lightbox -->
+  <script>Fancybox.bind("[data-fancybox]", {});</script>
+
+  <!-- Custom Effects -->
+  <script src="/dist/fade_in.js"></script>
+</body>
+
+</html>
