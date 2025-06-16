@@ -18,6 +18,7 @@ function startLoader() {
   const loader = document.getElementById("loader");
   const video = document.getElementById("loaderVideo");
   const enterButton = document.getElementById("enterButton");
+  const continueButton = document.getElementById("continueButton");
 
   if (!sessionStorage.getItem("loaderPlayed")) {
     loader.classList.remove("hidden");
@@ -26,22 +27,41 @@ function startLoader() {
 
     if (tryPlay !== undefined) {
       tryPlay.then(() => {
-        video.onended = () => {
+        // Show continue button during video playback
+        continueButton.classList.remove("hidden");
+
+        continueButton.onclick = () => {
           loader.classList.add("opacity-0");
-          document.body.classList.remove("opacity-0"); // ✅ make body visible
+          document.body.classList.remove("opacity-0");
           setTimeout(() => loader.remove(), 500);
         };
+
+        video.onended = () => {
+          loader.classList.add("opacity-0");
+          document.body.classList.remove("opacity-0");
+          setTimeout(() => loader.remove(), 500);
+        };
+
         sessionStorage.setItem("loaderPlayed", "true");
       }).catch(() => {
         enterButton.classList.remove("hidden");
         enterButton.onclick = () => {
           enterButton.classList.add("opacity-0");
           video.play().then(() => {
-            video.onended = () => {
+            continueButton.classList.remove("hidden");
+
+            continueButton.onclick = () => {
               loader.classList.add("opacity-0");
-              document.body.classList.remove("opacity-0"); // ✅ make body visible
+              document.body.classList.remove("opacity-0");
               setTimeout(() => loader.remove(), 500);
             };
+
+            video.onended = () => {
+              loader.classList.add("opacity-0");
+              document.body.classList.remove("opacity-0");
+              setTimeout(() => loader.remove(), 500);
+            };
+
             sessionStorage.setItem("loaderPlayed", "true");
             enterButton.remove();
           });
@@ -50,6 +70,6 @@ function startLoader() {
     }
   } else {
     loader.remove();
-    document.body.classList.remove("opacity-0"); // ✅ make body visible immediately if already played
+    document.body.classList.remove("opacity-0");
   }
 }
