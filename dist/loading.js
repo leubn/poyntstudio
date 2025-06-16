@@ -19,37 +19,45 @@ function startLoader() {
   const video = document.getElementById("loaderVideo");
   const enterButton = document.getElementById("enterButton");
 
+  video.playbackRate = 1.5;
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   if (!sessionStorage.getItem("loaderPlayed")) {
     loader.classList.remove("hidden");
 
     const tryPlay = video.play();
 
     if (tryPlay !== undefined) {
-      tryPlay.then(() => {
-        video.onended = () => {
-          loader.classList.add("opacity-0");
-          document.body.classList.remove("opacity-0"); // ✅ make body visible
-          setTimeout(() => loader.remove(), 500);
-        };
-        sessionStorage.setItem("loaderPlayed", "true");
-      }).catch(() => {
-        enterButton.classList.remove("hidden");
-        enterButton.onclick = () => {
-          enterButton.classList.add("opacity-0");
-          video.play().then(() => {
-            video.onended = () => {
-              loader.classList.add("opacity-0");
-              document.body.classList.remove("opacity-0"); // ✅ make body visible
-              setTimeout(() => loader.remove(), 500);
+      tryPlay
+        .then(() => {
+          video.onended = () => {
+            loader.classList.add("opacity-0");
+            document.body.classList.remove("opacity-0");
+            setTimeout(() => loader.remove(), 500);
+          };
+          sessionStorage.setItem("loaderPlayed", "true");
+        })
+        .catch(() => {
+          if (isMobile) {
+            enterButton.classList.remove("hidden");
+            enterButton.onclick = () => {
+              enterButton.classList.add("opacity-0");
+              video.play().then(() => {
+                video.onended = () => {
+                  loader.classList.add("opacity-0");
+                  document.body.classList.remove("opacity-0");
+                  setTimeout(() => loader.remove(), 500);
+                };
+                sessionStorage.setItem("loaderPlayed", "true");
+                enterButton.remove();
+              });
             };
-            sessionStorage.setItem("loaderPlayed", "true");
-            enterButton.remove();
-          });
-        };
-      });
+          }
+        });
     }
   } else {
     loader.remove();
-    document.body.classList.remove("opacity-0"); // ✅ make body visible immediately if already played
+    document.body.classList.remove("opacity-0");
   }
 }
