@@ -19,7 +19,7 @@ function startLoader() {
   const video = document.getElementById("loaderVideo");
   const enterButton = document.getElementById("enterButton");
 
-  video.playbackRate = 1.5;
+  video.playbackRate = 2.0;
 
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
