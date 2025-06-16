@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POYNT - Gallery</title>
+  <title>POYNT - Home</title>
   <meta name="description" content="Poynt Studio" />
 
   <!-- Favicon -->
@@ -66,7 +66,7 @@
           headerEl.innerHTML = html;
 
           // ✅ Set active nav link
-          const current = "gallery"; // ← CHANGE THIS PER PAGE
+          const current = ""; // ← CHANGE THIS PER PAGE
           document.querySelectorAll(".nav-link").forEach(link => {
             if (link.dataset.page === current) {
               const span = link.querySelector(".underline-span");
@@ -80,7 +80,7 @@
           // ✅ Set navbar title and link
           const titleEl = document.getElementById("navbarTitle");
           if (titleEl) {
-            titleEl.textContent = "← POYNT";  // ← CHANGE TEXT PER PAGE
+            titleEl.textContent = "POYNT";  // ← CHANGE TEXT PER PAGE
             titleEl.href = "/index.html";    // ← CHANGE LINK PER PAGE
           }
 
@@ -115,10 +115,10 @@
   <!-- Hero Section -->
   <div class="mb-20">
     <h1 class="text-5xl md:text-6xl font-bold font-signika tracking-wide leading-tight mb-6">
-      Capturing Stories, Not Just Photos
+      Portraits, framed with purpose
     </h1>
     <p class="text-lg md:text-xl max-w-xl mx-auto text-neutral-400">
-      We’re a collective of photographers and filmmakers turning moments into timeless visuals — weddings, portraits, real estate, and everything raw.
+      We're a Reno-based collective of photographers and filmmakers capturing weddings, graduations, portraits, real estate—and everything raw—in timeless visual stories.
     </p>
     <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
       <a href="/gallery.html" class="bg-white text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-neutral-200 transition">
@@ -126,6 +126,9 @@
       </a>
       <a href="/contact.html" class="border border-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition">
         Book a Shoot
+      </a>
+      <a href="/team.html" class="border border-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition">
+        Behind the Lens
       </a>
     </div>
   </div>
