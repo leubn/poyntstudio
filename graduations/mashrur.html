@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POYNT - Mashrur</title>
+  <meta name="description"
+    content="Poynt Studio">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="dist/assets/favicon.ico" />
+  <link rel="stylesheet" href="/dist/output.css" />
+  <link rel="stylesheet" href="/dist/styles.css" />
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Start - Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
+  <!-- End - Fonts -->
+  <!-- Start - Fancybox Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- End - Fancybox Scripts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./dist/*.{html,js}"],
+      theme: {
+        extend:
+                {
+                  fontFamily: {
+                    'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
+                    'signika': ['Signika', 'sans-serif'],
+                  },
+                },
+      },
+      plugins: [],
+    }
+  </script>
+</head>
+  
+<body
+  class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+
+<!-- Inject loading screen -->
+<div data-include-loading="/dist/loading.html"></div>
+<script src="/dist/loading.js"></script>
+
+
+  
+<!-- HEADER / NAVBAR -->
+<div id="header" data-include-header="/dist/header.html"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const headerEl = document.querySelector('[data-include-header]');
+    if (!headerEl) return;
+
+    fetch(headerEl.getAttribute('data-include-header'))
+      .then(res => res.text())
+      .then(html => {
+        headerEl.innerHTML = html;
+
+        // ✅ Set active nav link
+        // Options: "gallery", "team", "contact"
+        const current = "gallery"; // ← CHANGE THIS PER PAGE
+        document.querySelectorAll(".nav-link").forEach(link => {
+          if (link.dataset.page === current) {
+            const span = link.querySelector(".underline-span");
+            if (span) {
+              span.classList.remove("max-w-0");
+              span.classList.add("max-w-full");
+            }
+          }
+        });
+
+        // ✅ Set navbar title and link
+        const titleEl = document.getElementById("navbarTitle");
+        if (titleEl) {
+          titleEl.textContent = "← GRADUATIONS";  // ← CHANGE TEXT PER PAGE
+          titleEl.href = "/graduations.html";        // ← CHANGE LINK PER PAGE
+        }
+
+        // ✅ Load hamburger menu script
+        const script = document.createElement("script");
+        script.src = "/dist/menu.js";
+        document.body.appendChild(script);
+      })
+      .catch(err => {
+        headerEl.innerHTML = "<!-- Failed to load header -->";
+        console.error("Header load error:", err);
+      });
+  });
+</script>
+<!-- HEADER / NAVBAR END -->
+
+
+  <!-- Content -->
+  <div class="container mx-auto">
+    <h1 class="text-4xl pt-10 pb-8 font-bold">NATHAN</h1>
+    <section class="text-neutral-700">
+      <div class="container w-full">
+        <div class="flex flex-wrap w-full">
+          <div class="flex w-full md:w-1/2 flex-wrap">
+            <!-- Image 1 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687090/IMG_6890-Edit-2_gbwq5v.jpg" data-fancybox="gallery">
+                  <img alt="image1"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687090/IMG_6890-Edit-2_gbwq5v.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 2 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687084/IMG_1906_yhovpp.jpg" data-fancybox="gallery">
+                  <img alt="image2"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687084/IMG_1906_yhovpp.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 3 -->
+            <div class="w-full p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687085/IMG_2163_iy9238.jpg" data-fancybox="gallery">
+                  <img alt="image3"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687085/IMG_2163_iy9238.jpg" />
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex w-full md:w-1/2 flex-wrap">
+            <!-- Image 4 -->
+            <div class="w-full p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687088/IMG_2170_acm76s.jpg" data-fancybox="gallery">
+                  <img alt="image4"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687088/IMG_2170_acm76s.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 5 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687091/IMG_6860_xdogqr.jpg" data-fancybox="gallery">
+                  <img alt="image5"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687091/IMG_6860_xdogqr.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 6 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687086/IMG_1982_vc8bbj.jpg" data-fancybox="gallery">
+                  <img alt="image6"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687086/IMG_1982_vc8bbj.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 7 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687082/IMG_2032_h3ijc2.jpg" data-fancybox="gallery">
+                  <img alt="image7"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687082/IMG_2032_h3ijc2.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 8 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687082/IMG_1875_tgprpl.jpg" data-fancybox="gallery">
+                  <img alt="image8"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687082/IMG_1875_tgprpl.jpg" />
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex w-full md:w-1/2 flex-wrap">
+            <!-- Image 9 -->
+            <div class="w-full p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687646/IMG_2098_yd6dvp.jpg" data-fancybox="gallery">
+                  <img alt="image9"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687646/IMG_2098_yd6dvp.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 10 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687083/IMG_2024_pb1qig.jpg" data-fancybox="gallery">
+                  <img alt="image10"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687083/IMG_2024_pb1qig.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 11 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687083/IMG_2053_hipcdn.jpg" data-fancybox="gallery">
+                  <img alt="image11"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687083/IMG_2053_hipcdn.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 12 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687088/IMG_2458_ztx34b.jpg" data-fancybox="gallery">
+                  <img alt="image12"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687088/IMG_2458_ztx34b.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 13 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687090/IMG_6854_ttnhjq.jpg" data-fancybox="gallery">
+                  <img alt="image13"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687090/IMG_6854_ttnhjq.jpg" />
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex w-full md:w-1/2 flex-wrap">
+            <!-- Image 14 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687089/IMG_2481_qi2q6s.jpg" data-fancybox="gallery">
+                  <img alt="image14"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687089/IMG_2481_qi2q6s.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 15 -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687086/IMG_2135_w4valx.jpg" data-fancybox="gallery">
+                  <img alt="image15"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687086/IMG_2135_w4valx.jpg" />
+                </a>
+              </div>
+            </div>
+            <!-- Image 16 -->
+            <div class="w-full p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687086/IMG_2453_edoqzl.jpg" data-fancybox="gallery">
+                  <img alt="image16"
+                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="https://res.cloudinary.com/dxufo6vkw/image/upload/v1749687086/IMG_2453_edoqzl.jpg" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+ <!-- Footer -->
+  <div id="footerContainer" data-include-footer="/dist/footer.html"></div>
+  <script src="/dist/include-footer.js"></script>
+  <!-- Footer End -->
+  
+  <!-- Script for the LightBox -->
+  <script>
+    Fancybox.bind("[data-fancybox]", {});
+  </script>
+  <script src="/dist/fade_in.js"></script>
+</body>
+
+</html>
