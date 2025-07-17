@@ -52,6 +52,15 @@
   <!-- Loading screen -->
   <div data-include-loading="/dist/loading.html"></div>
   <script src="/dist/loading.js"></script>
+
+  <script>
+  // hide dynamically
+  document.body.style.visibility = "hidden";
+
+  window.addEventListener("load", () => {
+    document.body.style.visibility = "visible";
+  });
+  </script>
   
   <!-- HEADER / NAVBAR -->
   <div id="header" data-include-header="/dist/header.html"></div>
