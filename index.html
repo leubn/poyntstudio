@@ -54,12 +54,11 @@
   <script src="/dist/loading.js"></script>
 
   <script>
-  // hide dynamically
-  document.body.style.visibility = "hidden";
-
-  window.addEventListener("load", () => {
-    document.body.style.visibility = "visible";
-  });
+    // hide dynamically
+    document.body.style.visibility = "hidden";
+    window.addEventListener("load", () => {
+      document.body.style.visibility = "visible";
+    });
   </script>
   
   <!-- HEADER / NAVBAR -->
@@ -119,93 +118,112 @@
     });
   </script>
   
-<!-- Content -->
-<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 mt-20">
-  <!-- PAGE CONTENT -->
-  <div class="container mx-auto py-10">
-    <h1 class="text-4xl font-bold mb-6">GALLERY PRE-REGISTRATION</h1>
+  <!-- Content -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 mt-20">
+    <div class="container mx-auto py-10">
+      <h1 class="text-4xl font-bold mb-6">GALLERY PRE-REGISTRATION</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- NAHIN & GURPREET - August 12 & 14, 2025 -->
-      <a
-        href="https://gallery.poyntstudio.com/-NAHINGURPREET/register"
-        class="group relative overflow-hidden shadow-lg"
-        aria-label="Pre-register for Nahin & Gurpreet gallery"
-      >
-        <img
-          src="/dist/assets/NahinGurp.jpg"
-          alt="Nahin & Gurpreet"
-          class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-          <h2 class="text-white text-xl sm:text-2xl font-bold">
-            NAHIN &amp; GURPREET - August 12 &amp; 14, 2025
-          </h2>
-        </div>
-      </a>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- NAHIN & GURPREET - August 12 & 14, 2025 -->
+        <a
+          href="https://gallery.poyntstudio.com/-NAHINGURPREET/register"
+          class="group relative overflow-hidden shadow-lg"
+          aria-label="Pre-register for Nahin & Gurpreet gallery"
+        >
+          <img
+            src="/dist/assets/NahinGurp.jpg"
+            alt="Nahin & Gurpreet"
+            class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <h2 class="text-white text-xl sm:text-2xl font-bold">
+              NAHIN &amp; GURPREET - August 12 &amp; 14, 2025
+            </h2>
+          </div>
+        </a>
 
-      <!-- Karina's 45th Birthday - July 19, 2025 -->
-      <a
-        href="https://poyntstudio.pic-time.com/-karinas45thbirthday/register"
-        class="group relative overflow-hidden shadow-lg"
-        aria-label="Pre-register for Karina's 45th Birthday gallery"
-      >
-        <img
-          src="/dist/assets/Karina.jpg"
-          alt="Karina's 45th Birthday"
-          class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-          <h2 class="text-white text-xl sm:text-2xl font-bold">
-            Karina's 45th Birthday - July 19, 2025
-          </h2>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<br><br><br>
-
-
-  
-  <!-- Hero Section -->
-  <div class="mb-20">
-    <h1 class="text-5xl md:text-6xl font-bold font-signika tracking-wide leading-tight mb-6">
-      Portraits, framed with a purpose
-    </h1>
-    <p class="text-lg md:text-xl max-w-xl mx-auto text-neutral-400">
-      We're a Reno-based collective of photographers and filmmakers capturing weddings, graduations, portraits, real estate—and everything raw—in timeless visual stories.
-    </p>
-    <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
-      <a href="/gallery.html" class="bg-white text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-neutral-200 transition">
-        View Gallery
-      </a>
-      <a href="/contact.html" class="border border-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition">
-        Book a Shoot
-      </a>
-      <a href="/team.html" class="border border-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition">
-        The Crew
-      </a>
-    </div>
-  </div>
-
-  <!-- Centered Feature Image -->
-  <div class="w-full max-w-xl mx-auto">
-    <div class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 rotate-6 relative">
-      <img
-        src="/weddings/onick-fatima/onick-fatima5.jpeg"
-        alt="Feature Portrait"
-        class="aspect-square w-full object-cover h-auto max-h-full" />
-      <div class="absolute bottom-0 left-0 right-0 text-center">
-        <!-- Optional caption or text here -->
+        <!-- Karina's 45th Birthday - July 19, 2025 -->
+        <a
+          href="https://poyntstudio.pic-time.com/-karinas45thbirthday/register"
+          class="group relative overflow-hidden shadow-lg"
+          aria-label="Pre-register for Karina's 45th Birthday gallery"
+        >
+          <img
+            src="/dist/assets/Karina.jpg"
+            alt="Karina's 45th Birthday"
+            class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <h2 class="text-white text-xl sm:text-2xl font-bold">
+              Karina's 45th Birthday - July 19, 2025
+            </h2>
+          </div>
+        </a>
       </div>
     </div>
-  </div>
+  </section>
 
-</section>
+  <!-- Hero -->
+  <section class="relative mb-20 pt-8 text-center">
+    <!-- subtle bg glow -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="mx-auto h-64 w-64 rounded-full blur-3xl opacity-30 dark:opacity-40"
+           style="background: radial-gradient(closest-side, rgba(255,255,255,.15), transparent 70%);"></div>
+    </div>
+
+    <div class="mx-auto max-w-3xl px-6">
+      <h1 class="font-signika text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-5
+                 text-black dark:text-white">
+        Portraits, framed with a purpose
+      </h1>
+
+      <p class="mx-auto max-w-2xl text-base md:text-lg leading-relaxed
+                text-neutral-600 dark:text-neutral-300">
+        We're a Reno-based collective of photographers and filmmakers capturing weddings, graduations,
+        portraits, real estate—and everything raw—in timeless visual stories.
+      </p>
+
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/gallery.html"
+           class="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold
+                  bg-white text-black hover:bg-neutral-200 transition
+                  dark:bg-white dark:text-black dark:hover:bg-neutral-200">
+          View Gallery
+        </a>
+
+        <a href="/contact.html"
+           class="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold
+                  border border-black/20 text-black hover:bg-black hover:text-white transition
+                  dark:border-white/40 dark:text-white dark:hover:bg-white dark:hover:text-black">
+          Book a Shoot
+        </a>
+
+        <a href="/team.html"
+           class="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold
+                  border border-black/20 text-black hover:bg-black hover:text-white transition
+                  dark:border-white/40 dark:text-white dark:hover:bg-white dark:hover:text-black">
+          The Crew
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Image -->
+  <section class="w-full">
+    <div class="max-w-xl mx-auto">
+      <div class="relative m-6 md:m-12 p-5 pb-24 shadow-lg
+                  bg-white border border-gray-100
+                  dark:bg-neutral-900 dark:border-neutral-800">
+        <img
+          src="/weddings/onick-fatima/onick-fatima5.jpeg"
+          alt="Feature Portrait"
+          class="w-full h-auto aspect-square object-cover" />
+        <div class="absolute bottom-0 left-0 right-0 text-center"></div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <div id="footer" data-include-footer="/dist/footer.html"></div>
